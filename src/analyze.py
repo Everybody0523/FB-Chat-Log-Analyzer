@@ -2,7 +2,7 @@ import json
 from os import listdir
 from os.path import isfile, join
 
-PATH = "../messages/inbox/torontoganggang_E0LX7oWM4A"
+PATH = "../messages/inbox/ErraticBrainletPlansMax48hrNotice_ApawlGe7wQ"
 
 
 def mergeMessages(jsons):
@@ -54,6 +54,7 @@ def countReaccs(jsonDict):
   return out
 
 
+'''
 if __name__ == "__main__":
   onlyjson = [join(PATH, f) for f in listdir(PATH) if (isfile(join(PATH, f)) and ("json" in f))] 
   print(onlyjson)
@@ -65,3 +66,4 @@ if __name__ == "__main__":
   mergeMessages(jsonDicts)
   countMessages(jsonDicts[0])
   #print(countReaccs(jsonDicts[0]))
+'''
