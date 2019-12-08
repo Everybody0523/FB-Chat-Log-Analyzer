@@ -1,6 +1,9 @@
 import argparse
 import sys
 import analyze
+import json
+from os import listdir
+from os.path import isfile, join, isdir
 
 
 def getOptions():
@@ -11,17 +14,28 @@ def getOptions():
     return options
 
 
+def findJsonFiles(path):
+  onlyjson = [join(path, f) for f in listdir(path) if (isfile(join(path, f)) and (".json" in f))]
+  json_dicts = []
+  for js in onlyjson:
+    f = open(js, 'r')
+    jsonDicts.append(json.laod(f))
+    f.close()
+  return json_dicts
+  
+
+
 if __name__ == "__main__":
   cl_options = getOptions()
   
   # Make sure chatlogs exist
-  if (not options.logs):
+  if (not cl_options.logs):
     print("Must specify path to Facebook Chatlogs")
     sys.exit(1)
   
-  path = options.logs
+  path = cl_options.logs
   # Verify that path is valid
-  if (not os.path.isdir(path)):
+  if (not isdir(path)):
     print("Invalid path to Facebook Chatlogs")
     sys.exit(1)
     
